@@ -59,7 +59,7 @@ const ProductCart = ({ product }: { product: productsCard }) => {
       <figure className="w-[35%]">
         <img
           className="aspect-square"
-          src={product.imagen}
+          src={product.imagenes[0]}
           alt={product.descripcion}
         />
       </figure>

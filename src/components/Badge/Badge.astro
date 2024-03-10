@@ -11,12 +11,33 @@ interface Props {
     | "purple"
     | "red"
     | "yellow";
-  text: Category;
+  text: string;
 }
 const { color, text } = Astro.props;
+// text-xs font-medium me-2 px-2.5 py-0.5 rounded
+// bg-${color}-100 text-${color}-800 dark:bg-${color}-900 dark:text-${color}-300
 ---
 
 <span
-  class={`bg-${color}-100 text-${color}-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-${color}-900 dark:text-${color}-300`}
-  >{text}</span
+  class:list={[
+    "text-xs font-medium me-2 px-2.5 py-0.5 rounded w-min",
+    {
+      "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300":
+        color === "green",
+      "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300":
+        color === "blue",
+      "bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-300":
+        color === "gray",
+      "bg-indigo-100 text-indigo-800 dark:bg-indigo-900 dark:text-indigo-300":
+        color === "indigo",
+      "bg-pink-100 text-pink-800 dark:bg-pink-900 dark:text-pink-300":
+        color === "pink",
+      "bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-300":
+        color === "purple",
+      "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300":
+        color === "red",
+      "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300":
+        color === "yellow",
+    },
+  ]}>{text}</span
 >

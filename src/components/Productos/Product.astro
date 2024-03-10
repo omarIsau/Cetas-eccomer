@@ -1,19 +1,42 @@
 ---
+import Carousel from "./CaruselProduct";
+import Badge from "../Badge/Badge.astro";
 import type { Seta } from "../../types.d.ts";
 interface Props {
   seta: Seta;
 }
 const { seta } = Astro.props;
+let color: "blue" | "gray" | "green" | "indigo" | "pink" | "purple" | "red" | "yellow";
+switch (seta.categoria) {
+  case "suave":
+    color = "green";
+    break;
+  case "media":
+    color = "blue";
+    break;
+  case "intensa":
+    color = "yellow";
+    break;
+  default:
+    color = "red";
+}
 ---
-<li class="bg-white p-4 rounded-md shadow-md">
-    <a href={`/productos/producto/${seta.id}`}>
-      <img
-        class="w-full h-40 object-cover"
-        src={seta.imagen}
-        alt={seta.nombre}
-      />
-      <h2 class="text-lg font-bold">{seta.nombre}</h2>
-      <p class="text-gray-500">{seta.descripcion.slice(0, 50)}...</p>
-      <p class="text-blue-500 font-bold">${seta.precio}</p>
-    </a>
-  </li>
+
+<article class="bg-white p-4 rounded-md shadow-md flex flex-col gap-2">
+  <!-- <a href={`/productos/producto/${seta.id}`}> -->
+  <div class="relative">
+    <div class="max-w-md">
+      <Carousel slides={seta.imagenes} autoSlide={false} client:visible />
+    </div>
+  </div>
+  <h2 class="text-lg font-bold">{seta.nombre}</h2>
+  <p class="text-gray-500">{seta.descripcion.slice(0, 50)}...</p>
+  <Badge color={color} text={seta.categoria} />
+  <div class="flex items-center">
+    <p class="text-blue-500 font-bold"><span class="text-black">Precio:</span> ${seta.precio}</p>
+    <a
+      class="ml-auto p-3 text-blue-500 font-bold cursor-pointer hover:underline"
+     href={`/productos/producto/${seta.id}`}>mas...</a>
+  </div>
+  <!-- </a> -->
+</article>
