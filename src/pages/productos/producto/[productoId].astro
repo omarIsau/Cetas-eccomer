@@ -1,0 +1,42 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import BreadCrumProduct from "../../../components/BreadCrum/BreadCrumProduct.astro";
+import InteractiveProductSection from "../../../components/Productos/InteractiveProductSection";
+import { getSetasIds, getSetasById } from "@services/setasServices";
+import type { Seta } from "@/types";
+const { productoId } = Astro.params;
+const producto = getSetasById(productoId) as Seta;
+export function getStaticPaths() {
+  const categories = getSetasIds();
+  return categories.map((productoId) => ({ params: { productoId } }));
+}
+console.log(producto)
+---
+
+<Layout title="producto">
+  <main class="mt-6 gap-6 items-center flex flex-col">
+    <BreadCrumProduct
+      category={producto.categoria}
+      productName={`${producto?.nombre.slice(0, 16)}...`}
+    />
+    <section class="w-full flex m-12 mt-4 bg-slate-100 rounded-lg">
+      <figure
+        class="w-1/2 aspect-[1/1] overflow-hidden rounded-tl-lg rounded-bl-lg border-2 border-blue-500"
+      >
+        <img src={producto.imagen} alt={producto.nombre} />
+      </figure>
+      <section class="w-1/2 aspect-auto py-8 px-12 flex flex-col">
+        <h1 class="text-2xl font-bold">{producto.nombre}</h1>
+        <p class="mt-8">{producto.descripcion}</p>
+        <p class="mt-8 mb-8 text-xl font-bold">Precio: ${producto.precio}</p>
+        <div>
+          <span
+            class="w-auto bg-blue-100 text-blue-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300"
+            >{producto.categoria}</span
+          >
+        </div>
+        <InteractiveProductSection product={producto} client:visible />
+      </section>
+    </section>
+  </main>
+</Layout>

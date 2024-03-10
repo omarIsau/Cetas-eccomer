@@ -11,11 +11,15 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.5.6",
-    "@astrojs/preact": "^3.1.1",
+    "@astrojs/react": "^3.0.10",
     "@astrojs/tailwind": "^5.1.0",
+    "@types/react": "^18.2.64",
+    "@types/react-dom": "^18.2.21",
     "astro": "^4.4.14",
-    "preact": "^10.19.6",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "tailwindcss": "^3.4.1",
-    "typescript": "^5.4.2"
+    "typescript": "^5.4.2",
+    "zustand": "4.5.2"
   }
 }

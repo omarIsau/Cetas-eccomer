@@ -3,7 +3,30 @@ import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Welcome to Astro.">
-  <main>
+  <main class="flex w-full flex-col">
+    <section id="home-banner" class="p-12">
+      <h1 class="text-white text-[2rem] font-bold text-center">Conoce las marabillas de las setas</h1>
+    </section>
     <h1>astro app</h1>
   </main>
 </Layout>
+<style>
+  #home-banner {
+    background-image: url('/public/setas-baner.png');
+    animation: shadowAnimation 5s infinite linear alternate ;
+  }
+  @keyframes shadowAnimation {
+    from {
+      box-shadow: 0 0 10px rgb(241, 0, 241);
+    }
+    50% {
+      box-shadow: 0 0 10px rgb(204, 37, 255);
+    }
+    75% {
+      box-shadow: 0 0 10px rgb(37, 110, 255);
+    }
+    to {
+      box-shadow: 0 0 10px rgb(0, 241, 255);
+    }
+  }
+</style>

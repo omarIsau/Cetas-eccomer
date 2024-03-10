@@ -1,0 +1,27 @@
+@keyframes toch-on {
+    0% {
+        transform: translateY(-120%);
+        z-index: -100;
+    }
+    100% {
+        transform: translateY(0%);
+    }
+}
+@keyframes toch-off {
+    0% {
+        transform: translateY(0%);
+    }
+    100% {
+        transform: translateY(-120%);
+        z-index: -100;
+        display: none;
+
+    }
+}
+.toch-on {
+    animation: toch-on 1s ease-out;
+}
+.toch-off {
+    animation: toch-off 1s ease-out;
+    animation-fill-mode: forwards;
+}

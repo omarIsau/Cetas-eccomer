@@ -1,0 +1,10 @@
+---
+import LayoutProducts from "../../layouts/LayoutProducts.astro";
+import ProductsList from "@components/Productos/ListProducts.astro";
+import Setas from "@db/Products.json"
+---
+
+<LayoutProducts title="pagina - productos">
+  <h1 class="text-blue-500 text-2xl font-bold text-center mb-8">Productos</h1>
+  <ProductsList setas={Setas} />
+</LayoutProducts>

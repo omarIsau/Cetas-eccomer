@@ -1,0 +1,13 @@
+---
+import type { Seta } from "@/types";
+import Product from "./Product.astro";
+interface Props {
+  setas: Seta[];
+
+}
+const {setas} = Astro.props
+---
+
+<ul class="grid grid-cols-3 gap-4">
+  {setas.map((seta: Seta) => <Product seta={seta}/>)}
+</ul>

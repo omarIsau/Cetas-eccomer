@@ -1,0 +1,24 @@
+---
+import FilterLink from "./FilterLink.astro";
+import SearchProduct from "./SearchProduct.tsx";
+---
+
+<article class="sticky top-6">
+  <h2 class="text-2xl font-bold">Filtrado</h2>
+  <article class="mt-4 pl-3">
+    <h3 class="text-xl font-semibold">Categorias</h3>
+    <nav>
+      <ul class="flex flex-col ml-2">
+        <FilterLink text="Todos" color="orange" category="" />
+        <FilterLink text="suave" color="green" category="suave" />
+        <FilterLink text="media" color="blue" category="media" />
+        <FilterLink text="intensa" color="yellow" category="intensa" />
+        <FilterLink text="demoniaca" color="red" category="demoniaca" />
+      </ul>
+    </nav>
+  </article>
+  <article class="mt-4 pl-3">
+    <h3 class="text-xl font-semibold">Busqueda</h3>
+    <SearchProduct client:load />
+  </article>
+</article>

@@ -2,11 +2,21 @@
   "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
     "jsx": "react-jsx",
-    "jsxImportSource": "preact",
-    "baseUrl": ".",
+    "jsxImportSource": "react",
+    "baseUrl": "C:/Users/capypene/Dev/setasEcommer",
     "paths": {
-      "@/*":["src/*"],
-      "@components/*":["src/components/*"],
+      "@/*": [
+        "src/*"
+      ],
+      "@components/*": [
+        "src/components/*"
+      ],
+      "@services/*": [
+        "src/services/*"
+      ],
+      "@db/*": [
+        "src/db/*"
+      ],
     }
   }
 }

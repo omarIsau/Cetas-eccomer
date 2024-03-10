@@ -1,0 +1,23 @@
+---
+import Layout from "./Layout.astro";
+import FilterProducts from '@components/Filter/FilterProducts/index.astro';
+---
+
+<Layout title="pagina - productos">
+  <main class="relative flex">
+    <aside class="w-[25%] relative">
+      <FilterProducts />
+    </aside>
+    <section class="w-[70%] inline-block">
+      <slot />
+    </section>
+  </main>
+</Layout>
+<style>
+  input[name="buscador"] {
+    border-bottom: 0px;
+  }
+  input[name="buscador"]: {
+    border-bottom: 1px solid green;
+  }
+</style>
