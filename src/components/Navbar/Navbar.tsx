@@ -7,7 +7,7 @@ const Navbar = () => {
         <a href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
           <img src="/logo.webp" className="h-8" alt="Setas loog" />
           <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
-            3pruevaClouflere.com
+            Setitas.com
           </span>
         </a>
         <NavToch />
