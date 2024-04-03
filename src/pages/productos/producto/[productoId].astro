@@ -1,16 +1,17 @@
 ---
 import Layout from "../../../layouts/Layout.astro";
-import BreadCrumProduct from "../../../components/BreadCrum/BreadCrumProduct.astro";
-import InteractiveProductSection from "../../../components/Productos/InteractiveProductSection";
+import BreadCrumProduct from "@components/BreadCrum/BreadCrumProduct.astro";
+import InteractiveProductSection from "@components/Productos/InteractiveProductSection";
+import ProductsByCategory from '@components/Footer/ProductByCAtegory/index.astro'
 import { getSetasIds, getSetasById } from "@services/setasServices";
 import type { Seta } from "@/types";
+import Carousel from "@/components/Productos/CaruselProduct";
 const { productoId } = Astro.params;
 const producto = getSetasById(productoId) as Seta;
 export function getStaticPaths() {
   const categories = getSetasIds();
   return categories.map((productoId) => ({ params: { productoId } }));
 }
-console.log(producto)
 ---
 
 <Layout title="producto">
@@ -19,15 +20,27 @@ console.log(producto)
       category={producto.categoria}
       productName={`${producto?.nombre.slice(0, 16)}...`}
     />
-    <section class="w-full flex m-12 mt-4 bg-slate-100 rounded-lg">
+    <section class="w-full flex p-4 bg-slate-100 rounded-lg">
       <figure
-        class="w-1/2 aspect-[1/1] overflow-hidden rounded-tl-lg rounded-bl-lg border-2 border-blue-500"
+        class="flex items-center justify-center w-1/2 p-8 aspect-[2/1] overflow-hidden rounded-tl-lg rounded-bl-lg"
       >
-        <img src={producto.imagenes[0]} alt={producto.nombre} />
+        <div class="relative rounded-md overflow-hidden">
+          <div class="w-full">
+            <Carousel
+              slides={producto.imagenes}
+              autoSlide={false}
+              client:visible
+            />
+          </div>
+        </div>
       </figure>
-      <section class="w-1/2 aspect-auto py-8 px-12 flex flex-col">
+      <section class="w-1/2 aspect-auto pt-8 pb-0 px-12 flex flex-col">
         <h1 class="text-2xl font-bold">{producto.nombre}</h1>
-        <p class="mt-8">{producto.descripcion}</p>
+        {
+          producto.descripcion
+            .split("/n")
+            .map((parrafo) => <p class="mt-4">{parrafo}</p>)
+        }
         <p class="mt-8 mb-8 text-xl font-bold">Precio: ${producto.precio}</p>
         <div>
           <span
@@ -38,5 +51,6 @@ console.log(producto)
         <InteractiveProductSection product={producto} client:visible />
       </section>
     </section>
+    <ProductsByCategory categories={producto.categoria} />
   </main>
 </Layout>

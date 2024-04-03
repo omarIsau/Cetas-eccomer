@@ -1,6 +1,7 @@
 import type { productsCard } from "@/store/card";
 import { useCarStore } from "@/store/card";
 import { useState } from "react";
+import Carousel from "../CaruselProduct";
 const ProductCart = ({ product }: { product: productsCard }) => {
   const updateCountProduct = useCarStore((state) => state.updateCountProduct);
   const deleteProduct = useCarStore((state) => state.deleteProduct);
@@ -17,16 +18,16 @@ const ProductCart = ({ product }: { product: productsCard }) => {
   };
   const deleteProductCar = () => {
     deleteProduct(product.id);
-  }
+  };
   return (
     <article
-      className="h-auto p-2 overflow-hidden bg-green-300 flex justify-between"
+      className="h-auto p-2 overflow-hidden bg-slate-100 rounded-lg flex"
       key={product.id}
     >
-      <div className="flex flex-col">
+      <div className="w-2/3 flex flex-col gap-2">
         <h2 className="text-lg font-[500]">{product.nombre}</h2>
         <p className="mt-3 font-[500]">precio : {product.precio}</p>
-        <p className="mt-3 font-[500]">Total : {product.precio * count}</p>
+        <p className="mt-3 font-[500]">subTotal : {product.precio * count}</p>
         <div className="flex justify-between px-4 mt-auto">
           <div className="flex gap-2">
             <button
@@ -46,8 +47,8 @@ const ProductCart = ({ product }: { product: productsCard }) => {
             </button>
           </div>
           <div>
-          <button
-          onClick={deleteProductCar}
+            <button
+              onClick={deleteProductCar}
               className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
             >
               {" "}
@@ -56,13 +57,14 @@ const ProductCart = ({ product }: { product: productsCard }) => {
           </div>
         </div>
       </div>
-      <figure className="w-[35%]">
-        <img
-          className="aspect-square"
-          src={product.imagenes[0]}
-          alt={product.descripcion}
-        />
-      </figure>
+      <div className="relative w-1/3 flex items-center justify-center">
+        <div className="max-w-md">
+          <Carousel
+            slides={product.imagenes}
+            autoSlide={false}
+          />
+        </div>
+      </div>
     </article>
   );
 };

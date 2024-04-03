@@ -4,20 +4,12 @@ import FilterProducts from '@components/Filter/FilterProducts/index.astro';
 ---
 
 <Layout title="pagina - productos">
-  <main class="relative flex">
-    <aside class="w-[25%] relative">
+  <main class="relative flex flex-col laptop:flex-row laptop:gap-4">
+    <aside class="z-10 w-full laptop:w-1/4">
       <FilterProducts />
     </aside>
-    <section class="w-[70%] inline-block">
+    <section class="w-full">
       <slot />
     </section>
   </main>
 </Layout>
-<style>
-  input[name="buscador"] {
-    border-bottom: 0px;
-  }
-  input[name="buscador"]: {
-    border-bottom: 1px solid green;
-  }
-</style>

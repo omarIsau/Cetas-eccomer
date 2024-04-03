@@ -5,10 +5,10 @@ import SearchProduct from "./SearchProduct.tsx";
 
 <article class="sticky top-6">
   <h2 class="text-2xl font-bold">Filtrado</h2>
-  <article class="mt-4 pl-3">
+  <article class="mt-4">
     <h3 class="text-xl font-semibold">Categorias</h3>
     <nav>
-      <ul class="flex flex-col ml-2">
+      <ul class="flex flex-row justify-center gap-4 py-4">
         <FilterLink text="Todos" color="orange" category="" />
         <FilterLink text="suave" color="green" category="suave" />
         <FilterLink text="media" color="blue" category="media" />
@@ -17,7 +17,7 @@ import SearchProduct from "./SearchProduct.tsx";
       </ul>
     </nav>
   </article>
-  <article class="mt-4 pl-3">
+  <article class="mt-4">
     <h3 class="text-xl font-semibold">Busqueda</h3>
     <SearchProduct client:load />
   </article>

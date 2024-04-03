@@ -8,6 +8,13 @@ interface Props {
 const {setas} = Astro.props
 ---
 
-<div class="grid grid-cols-3 gap-4">
+<div>
   {setas.map((seta: Seta) => <Product seta={seta}/>)}
 </div>
+<style>
+  div {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  }
+</style>

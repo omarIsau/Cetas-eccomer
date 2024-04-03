@@ -23,10 +23,9 @@ switch (seta.categoria) {
 ---
 
 <article class="bg-white p-4 rounded-md shadow-md flex flex-col gap-2">
-  <!-- <a href={`/productos/producto/${seta.id}`}> -->
   <div class="relative">
     <div class="max-w-md">
-      <Carousel slides={seta.imagenes} autoSlide={false} client:visible />
+      <Carousel slides={seta.imagenes} autoSlide={false} client:load />
     </div>
   </div>
   <h2 class="text-lg font-bold">{seta.nombre}</h2>
@@ -38,5 +37,4 @@ switch (seta.categoria) {
       class="ml-auto p-3 text-blue-500 font-bold cursor-pointer hover:underline"
      href={`/productos/producto/${seta.id}`}>mas...</a>
   </div>
-  <!-- </a> -->
 </article>

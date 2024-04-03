@@ -1,6 +1,4 @@
 ---
-import { Category } from "../../types";
-
 interface Props {
   color:
     | "blue"
@@ -14,8 +12,6 @@ interface Props {
   text: string;
 }
 const { color, text } = Astro.props;
-// text-xs font-medium me-2 px-2.5 py-0.5 rounded
-// bg-${color}-100 text-${color}-800 dark:bg-${color}-900 dark:text-${color}-300
 ---
 
 <span

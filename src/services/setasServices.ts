@@ -11,3 +11,7 @@ export function getSetasById(id: number) {
   const product = Setas.find((product) => product.id == id);
   return product;
 }
+export function getSetasByCategory(category: string) {
+  const products = Setas.filter((product) => product.categoria == category);
+  return products;
+}
